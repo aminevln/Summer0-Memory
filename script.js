@@ -38,18 +38,35 @@ function creaCard(img){
     for(let i=0; i<themes.length; ++i)
         themes[i].style.border = "0px solid #fff"
     img.style.border = "3px solid #fff"
+    console.log('wood')
+
     switch(img.name){
-        case 0: 
+        case '0': 
             wood();
         break;
-        case 1:
+        case '1':
             space();
         break;
-        case 2:
+        case '2':
             code();
         break;
     }
 }
 function wood(){
-    
+    let he = document.getElementById('main')
+    he.style.backgroundImage = "url(img/bwood.jpg)"
+
+    creaCaselle()
+}
+function creaCaselle(){
+    let ctt = document.createElement('')
+    for(let i=0; i<4; ++i){
+        let rw = document.createElement('div')
+        rw.classList.add('row')
+        for(let j=0; j<4; ++j){
+            let ct = document.createElement('div')
+            ct.classList.add('container', 'ctsm', 'col-3')
+        }
+        ctt.appendChild(rw)
+    }
 }
