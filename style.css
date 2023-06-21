@@ -27,12 +27,3 @@ main{
 body{
     overflow: hidden;
 }
-#mnct{
-    height: 400px;
-    width: 400px;
-}
-.ctsm{
-    margin: 10px;
-    height: 50px;
-    border: 1px solid red;
-}

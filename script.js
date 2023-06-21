@@ -55,11 +55,14 @@ function creaCard(img){
 function wood(){
     let he = document.getElementById('main')
     he.style.backgroundImage = "url(img/bwood.jpg)"
-
     creaCaselle()
+    let caselle = document.getElementsByClassName('ctsm')
+    for(let i=0; i<caselle.length; ++i)
+        caselle[i].style.backgroundImage = 'url(img/theme0.jpg)'
 }
 function creaCaselle(){
-    let ctt = document.createElement('')
+    let ctt = document.createElement('div')
+    ctt.classList.add('container')
     for(let i=0; i<4; ++i){
         let rw = document.createElement('div')
         rw.classList.add('row')
@@ -69,4 +72,5 @@ function creaCaselle(){
         }
         ctt.appendChild(rw)
     }
+    document.querySelector('main').appendChild(ctt)
 }
