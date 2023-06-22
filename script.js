@@ -62,7 +62,9 @@ function setBG(a){
     for(let i=0; i<bgs.length; ++i){
         bgs[i].classList.replace("animate__wobble", "animate__backOutUp")
     }
-    creaCard(a)
+    setTimeout(function(){
+        creaCard(a)
+    }, 1000)
 }
 function creaCard(img){
     let themes = document.getElementsByClassName('imgThemes')
@@ -92,6 +94,28 @@ function wood(){
     for(let i=0; i<caselle.length; ++i){
         caselle[i].style.backgroundImage = 'url(img/theme0.jpg)'
         caselle[i].style.border = "4px solid burlywood"
+    }
+}
+function space(){
+    let he = document.getElementById('main')
+    he.style.backgroundImage = "url(img/spacedark.jpg)"
+    let main = document.querySelector('main')
+    main.innerHTML = creaCaselle()
+    let caselle = document.getElementsByClassName('ctsm')
+    for(let i=0; i<caselle.length; ++i){
+        caselle[i].style.backgroundImage = 'url(img/theme1.jpg)'
+        caselle[i].style.border = "4px solid rgb(151, 151, 205)"
+    }
+}
+function code(){
+    let he = document.getElementById('main')
+    he.style.backgroundImage = "url(img/darkcoding.webp)"
+    let main = document.querySelector('main')
+    main.innerHTML = creaCaselle()
+    let caselle = document.getElementsByClassName('ctsm')
+    for(let i=0; i<caselle.length; ++i){
+        caselle[i].style.backgroundImage = 'url(img/theme2.jpg)'
+        caselle[i].style.border = "4px solid #36483e"
     }
 }
 function creaCaselle(){
