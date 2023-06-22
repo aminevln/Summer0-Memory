@@ -37,6 +37,7 @@ function start(){
         let caseTemi = document.getElementsByClassName('caseTemi')
         for(let i=0; i<caseTemi.length; ++i){
             caseTemi[i].src = "/img/theme"+i.toString()+'.jpg'
+            caseTemi[i].name = i.toString()
         }
     }
 }
@@ -44,14 +45,24 @@ function creaTemi(){
     
     let a = 
     `
-        <h1 class="BigText animate__wobble">Benvenuto! Scegli il tuo tema</h1>
+        <h1 class="BigText animate__animated animate__wobble">Benvenuto! Scegli il tuo tema</h1>
         <div class="padreTemi">
-            <img class="caseTemi animate__animated animate__wobble"></img>
-            <img class="caseTemi animate__animated animate__wobble"></img>
-            <img class="caseTemi animate__animated animate__wobble"></img>
+            <img onclick="setBG(this)" name="0" class="caseTemi animate__animated animate__wobble"></img>
+            <img onclick="setBG(this)" name="1" class="caseTemi animate__animated animate__wobble"></img>
+            <img onclick="setBG(this)" name="2" class="caseTemi animate__animated animate__wobble"></img>
         </div>
     `
     return a
+}
+function setBG(a){
+    console.log(a.name)
+    let bgs = document.getElementsByClassName('caseTemi')
+    let h1 = document.querySelector('.BigText')
+    h1.classList.replace("animate__wobble", "animate__backOutUp")
+    for(let i=0; i<bgs.length; ++i){
+        bgs[i].classList.replace("animate__wobble", "animate__backOutUp")
+    }
+    creaCard(a)
 }
 function creaCard(img){
     let themes = document.getElementsByClassName('imgThemes')
@@ -88,29 +99,27 @@ function creaCaselle(){
     `
     <div class="container">
         <div class="row">
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
+          <div class="container ctsm animate__animated animate__pulse"></div>
+          <div class="container ctsm animate__animated animate__pulse"></div>
+          <div class="container ctsm animate__animated animate__pulse"></div>
+          <div class="container ctsm animate__animated animate__pulse"></div>
         </div>
         <div class="row">
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-        </div>
-        <div class="row">
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-        </div>
-        <div class="row">
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-          <div class="container ctsm"></div>
-        </div>
+          <div class="container ctsm animate__animated animate__pulse"></div>
+          <div class="container ctsm animate__animated animate__pulse"></div>
+          <div class="container ctsm animate__animated animate__pulse"></div>
+          <div class="container ctsm animate__animated animate__pulse"></div>
+        </div><div class="row">
+        <div class="container ctsm animate__animated animate__pulse"></div>
+        <div class="container ctsm animate__animated animate__pulse"></div>
+        <div class="container ctsm animate__animated animate__pulse"></div>
+        <div class="container ctsm animate__animated animate__pulse"></div>
+      </div><div class="row">
+      <div class="container ctsm animate__animated animate__pulse"></div>
+      <div class="container ctsm animate__animated animate__pulse"></div>
+      <div class="container ctsm animate__animated animate__pulse"></div>
+      <div class="container ctsm animate__animated animate__pulse"></div>
+    </div>
       </div>
     `
     return a
