@@ -1,4 +1,5 @@
 function start(){
+    
     let ulTemi = document.getElementById('ulTemi')
     for(let i=0; i<3; ++i){
         let li = document.createElement('li')
@@ -31,7 +32,26 @@ function start(){
         li.appendChild(img)
         ulTemi.appendChild(li2)
         ulTemi.appendChild(li)
+        let main = document.querySelector('main')
+        main.innerHTML = creaTemi()
+        let caseTemi = document.getElementsByClassName('caseTemi')
+        for(let i=0; i<caseTemi.length; ++i){
+            caseTemi[i].src = "/img/theme"+i.toString()+'.jpg'
+        }
     }
+}
+function creaTemi(){
+    
+    let a = 
+    `
+        <h1 class="BigText animate__wobble">Benvenuto! Scegli il tuo tema</h1>
+        <div class="padreTemi">
+            <img class="caseTemi animate__animated animate__wobble"></img>
+            <img class="caseTemi animate__animated animate__wobble"></img>
+            <img class="caseTemi animate__animated animate__wobble"></img>
+        </div>
+    `
+    return a
 }
 function creaCard(img){
     let themes = document.getElementsByClassName('imgThemes')
@@ -60,6 +80,7 @@ function wood(){
     let caselle = document.getElementsByClassName('ctsm')
     for(let i=0; i<caselle.length; ++i){
         caselle[i].style.backgroundImage = 'url(img/theme0.jpg)'
+        caselle[i].style.border = "4px solid burlywood"
     }
 }
 function creaCaselle(){
