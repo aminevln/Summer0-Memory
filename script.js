@@ -55,22 +55,42 @@ function creaCard(img){
 function wood(){
     let he = document.getElementById('main')
     he.style.backgroundImage = "url(img/bwood.jpg)"
-    creaCaselle()
+    let main = document.querySelector('main')
+    main.innerHTML = creaCaselle()
     let caselle = document.getElementsByClassName('ctsm')
-    for(let i=0; i<caselle.length; ++i)
+    for(let i=0; i<caselle.length; ++i){
         caselle[i].style.backgroundImage = 'url(img/theme0.jpg)'
+    }
 }
 function creaCaselle(){
-    let ctt = document.createElement('div')
-    ctt.classList.add('container')
-    for(let i=0; i<4; ++i){
-        let rw = document.createElement('div')
-        rw.classList.add('row')
-        for(let j=0; j<4; ++j){
-            let ct = document.createElement('div')
-            ct.classList.add('container', 'ctsm', 'col-3')
-        }
-        ctt.appendChild(rw)
-    }
-    document.querySelector('main').appendChild(ctt)
+    let a = 
+    `
+    <div class="container">
+        <div class="row">
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+        </div>
+        <div class="row">
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+        </div>
+        <div class="row">
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+        </div>
+        <div class="row">
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+          <div class="container ctsm"></div>
+        </div>
+      </div>
+    `
+    return a
 }
