@@ -1,5 +1,4 @@
 function start(){
-    
     let ulTemi = document.getElementById('ulTemi')
     for(let i=0; i<3; ++i){
         let li = document.createElement('li')
@@ -77,7 +76,6 @@ function creaCard(img){
         case '0': 
             wood();
             setImg();
-            setWood();
         break;
         case '1':
             space();
@@ -102,38 +100,14 @@ function wood(){
         caselle[i].style.border = "4px solid burlywood"
     }
 }
-function setWood(){
-    let caselle = document.getElementsByClassName('ctsm')
-    
-}
+
 function setImg(){
-    let caselle = document.getElementsByClassName('ctsm')
-    let aus = []
-    let j
-    for(let i=0; i<caselle.length; ++i){
-        do{
-            j=Math.floor(Math.random()*8)
-        }while(!fnd(j, aus))
-        caselle[i].id = j.toString()
-        aus.push(j)
-    }
-    if(caselle[0].style.backgroundImage = 'url(img/theme0.jpg)'){
-        caselle.addEventListener('click', ()=>{
-            for(let i=0; i<caselle.length; ++i){
-                switch(caselle[i].id){
-                    case 0:
-                        caselle[i].style.backgroundImage = 'url(wood/wood0.webp)'
-                    break;
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                }
-            }
-        })
+    var numeri = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7];
+    var caselle = document.getElementsByClassName('ctsm');
+    for (var i = 0; i < caselle.length; i++) {
+      var indiceCasuale = Math.floor(Math.random() * numeri.length);
+      caselle[i].id = numeri[indiceCasuale];
+      numeri.splice(indiceCasuale, 1);
     }
 }
 function fnd(j, aus){
@@ -144,7 +118,7 @@ function fnd(j, aus){
             fnd=true
         i++;
     }while(!fnd && i<aus.length)
-    return !fnd
+    return true
 }
 function space(){
     let he = document.getElementById('main')
@@ -173,28 +147,45 @@ function creaCaselle(){
     `
     <div class="container">
         <div class="row">
-          <div class="container ctsm animate__animated animate__pulse"></div>
-          <div class="container ctsm animate__animated animate__pulse"></div>
-          <div class="container ctsm animate__animated animate__pulse"></div>
-          <div class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
         </div>
         <div class="row">
-          <div class="container ctsm animate__animated animate__pulse"></div>
-          <div class="container ctsm animate__animated animate__pulse"></div>
-          <div class="container ctsm animate__animated animate__pulse"></div>
-          <div class="container ctsm animate__animated animate__pulse"></div>
-        </div><div class="row">
-        <div class="container ctsm animate__animated animate__pulse"></div>
-        <div class="container ctsm animate__animated animate__pulse"></div>
-        <div class="container ctsm animate__animated animate__pulse"></div>
-        <div class="container ctsm animate__animated animate__pulse"></div>
-      </div><div class="row">
-      <div class="container ctsm animate__animated animate__pulse"></div>
-      <div class="container ctsm animate__animated animate__pulse"></div>
-      <div class="container ctsm animate__animated animate__pulse"></div>
-      <div class="container ctsm animate__animated animate__pulse"></div>
-    </div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+        </div>
+        <div class="row">
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+        </div>
+        <div class="row">
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+        </div>
       </div>
     `
     return a
+}
+function setBck(div){
+    let main = document.querySelector('main')
+    console.log('hai clkto')
+    switch(main.style.backgroundImage){
+        case 'url("img/bwood.jpg")':
+            div.style.backgroundImage= "url(./wood/wood"+div.id.toString()+".webp)"
+        break;
+        case 'url("img/spacedark.jpg")':
+            div.style.backgroundImage= "url(./space/space"+div.id.toString()+".webp)"
+        break;
+        case 'url("img/darkcoding.webp")':
+            div.style.backgroundImage= "url(./wood/wood"+div.id.toString()+".webp)"
+        break;
+    }
 }

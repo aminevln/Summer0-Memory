@@ -35,6 +35,7 @@ body{
     border-radius: 15px;
     cursor: pointer;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .BigText{
     font-size: 3rem;
