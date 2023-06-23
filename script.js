@@ -1,3 +1,5 @@
+let nClick = 0
+let dipre=""
 function start(){
     let ulTemi = document.getElementById('ulTemi')
     for(let i=0; i<3; ++i){
@@ -175,17 +177,40 @@ function creaCaselle(){
     return a
 }
 function setBck(div){
+    let bg = 0;
+    let caselle = document.getElementsByClassName('ctsm')
+    if(nClick===0)
+        dipre = div
     let main = document.querySelector('main')
     console.log('hai clkto')
     switch(main.style.backgroundImage){
         case 'url("img/bwood.jpg")':
             div.style.backgroundImage= "url(./wood/wood"+div.id.toString()+".webp)"
-        break;
+            bg=0
+            break;
         case 'url("img/spacedark.jpg")':
             div.style.backgroundImage= "url(./space/space"+div.id.toString()+".webp)"
+            bg=1
         break;
         case 'url("img/darkcoding.webp")':
             div.style.backgroundImage= "url(./wood/wood"+div.id.toString()+".webp)"
+            bg=2
         break;
+    }
+    nClick++
+    if(nClick === 2){
+        if(div.id === dipre.id){
+            setTimeout(function(){
+                div.style.visibility = "hidden"
+                dipre.style.visibility = "hidden"
+            }, 1000)
+        }else{
+            setTimeout(function(){
+                div.style.backgroundImage="url(img/theme"+bg+".jpg)"
+                dipre.style.backgroundImage="url(img/theme"+bg+".jpg)"
+            }, 2000)
+        }
+        nClick = 0
+
     }
 }
