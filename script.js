@@ -76,12 +76,18 @@ function creaCard(img){
     switch(img.name){
         case '0': 
             wood();
+            setImg();
+            setWood();
         break;
         case '1':
             space();
+            setImg();
+
         break;
         case '2':
             code();
+            setImg();
+
         break;
     }
 }
@@ -95,6 +101,50 @@ function wood(){
         caselle[i].style.backgroundImage = 'url(img/theme0.jpg)'
         caselle[i].style.border = "4px solid burlywood"
     }
+}
+function setWood(){
+    let caselle = document.getElementsByClassName('ctsm')
+    
+}
+function setImg(){
+    let caselle = document.getElementsByClassName('ctsm')
+    let aus = []
+    let j
+    for(let i=0; i<caselle.length; ++i){
+        do{
+            j=Math.floor(Math.random()*8)
+        }while(!fnd(j, aus))
+        caselle[i].id = j.toString()
+        aus.push(j)
+    }
+    if(caselle[0].style.backgroundImage = 'url(img/theme0.jpg)'){
+        caselle.addEventListener('click', ()=>{
+            for(let i=0; i<caselle.length; ++i){
+                switch(caselle[i].id){
+                    case 0:
+                        caselle[i].style.backgroundImage = 'url(wood/wood0.webp)'
+                    break;
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                }
+            }
+        })
+    }
+}
+function fnd(j, aus){
+    let fnd = false;
+    let i=0
+    do{
+        if(j==aus[i])
+            fnd=true
+        i++;
+    }while(!fnd && i<aus.length)
+    return !fnd
 }
 function space(){
     let he = document.getElementById('main')
@@ -115,7 +165,7 @@ function code(){
     let caselle = document.getElementsByClassName('ctsm')
     for(let i=0; i<caselle.length; ++i){
         caselle[i].style.backgroundImage = 'url(img/theme2.jpg)'
-        caselle[i].style.border = "4px solid #36483e"
+        caselle[i].style.border = "4px solid #fff"
     }
 }
 function creaCaselle(){
