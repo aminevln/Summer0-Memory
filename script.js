@@ -57,6 +57,7 @@ function creaTemi(){
     return a
 }
 function setBG(a, e){
+    cas=16
     console.log(a.name)
     let bgs = document.getElementsByClassName('caseTemi')
     let h1 = document.querySelector('.BigText')
@@ -151,7 +152,7 @@ function creaCaselle(){
     <div class="container" id:"cracra">
         <h1 class:"BigText" id="sksk">TESSERE RIMANENTI: ${cas}</h1>
     </div>
-    <div class="container">
+    <div class="container bgtsm">
         <div class="row">
           <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
           <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
@@ -198,7 +199,6 @@ function setBck(div, e){
     if(nClick===0)
         dipre = div
     let main = document.querySelector('main')
-    console.log('hai clkto')
     switch(main.style.backgroundImage){
         case 'url("img/bwood.jpg")':
             div.style.backgroundImage= "url(./wood/wood"+div.id.toString()+".webp)"
@@ -234,4 +234,21 @@ function setBck(div, e){
         nClick = 0
 
     }
+    if(cas === 0){
+        setWin()
+    }
+}
+function setWin(){
+    let main = document.getElementById('main')
+    main.innerHTML = ""
+    let p = document.createElement('h1')
+    p.textContent = "VITTORIA !!"
+    p.classList.add('BigText')
+    let btn = document.createElement('button')
+    btn.addEventListener('click', start)
+    btn.textContent = "CONTINUA..."
+    btn.classList.add('btnWin')
+    main.appendChild(p)
+    main.appendChild(btn)
+    
 }
