@@ -209,7 +209,7 @@ function setBck(div, e){
             bg=1
         break;
         case 'url("img/darkcoding.webp")':
-            div.style.backgroundImage= "url(./wood/wood"+div.id.toString()+".webp)"
+            div.style.backgroundImage= "url(./coding/coding"+div.id.toString()+".png)"
             bg=2
         break;
     }
