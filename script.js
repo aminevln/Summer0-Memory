@@ -1,5 +1,6 @@
 let nClick = 0
 let dipre=""
+let cas = 16
 function start(){
     let ulTemi = document.getElementById('ulTemi')
     for(let i=0; i<3; ++i){
@@ -48,14 +49,14 @@ function creaTemi(){
     `
         <h1 class="BigText animate__animated animate__wobble">Benvenuto! Scegli il tuo tema</h1>
         <div class="padreTemi">
-            <img onclick="setBG(this)" name="0" class="caseTemi animate__animated animate__wobble"></img>
-            <img onclick="setBG(this)" name="1" class="caseTemi animate__animated animate__wobble"></img>
-            <img onclick="setBG(this)" name="2" class="caseTemi animate__animated animate__wobble"></img>
+            <img onclick="setBG(this, event)" name="0" class="caseTemi animate__animated animate__wobble"></img>
+            <img onclick="setBG(this, event)" name="1" class="caseTemi animate__animated animate__wobble"></img>
+            <img onclick="setBG(this, event)" name="2" class="caseTemi animate__animated animate__wobble"></img>
         </div>
     `
     return a
 }
-function setBG(a){
+function setBG(a, e){
     console.log(a.name)
     let bgs = document.getElementsByClassName('caseTemi')
     let h1 = document.querySelector('.BigText')
@@ -147,38 +148,53 @@ function code(){
 function creaCaselle(){
     let a = 
     `
+    <div class="container" id:"cracra">
+        <h1 class:"BigText" id="sksk">TESSERE RIMANENTI: ${cas}</h1>
+    </div>
     <div class="container">
         <div class="row">
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
         </div>
         <div class="row">
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
         </div>
         <div class="row">
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
         </div>
         <div class="row">
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
-          <div onclick="setBck(this)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
+          <div onclick="setBck(this, event)" class="container ctsm animate__animated animate__pulse"></div>
         </div>
       </div>
     `
     return a
 }
-function setBck(div){
+function setBck(div, e){
+    var caselle = document.getElementsByClassName('ctsm');
+    console.log(e.target)
+    if (!div.classList.contains('flip')) {
+        div.classList.remove('flip')
+
+        div.classList.add('flip');
+        div.classList.toggle('back');
+        div.classList.toggle('front');
+    }
+    for(let i=0; i<16; ++i)
+        caselle[i].addEventListener('animationend', () => {
+            caselle[i].classList.remove('flip');
+        });
     let bg = 0;
-    let caselle = document.getElementsByClassName('ctsm')
     if(nClick===0)
         dipre = div
     let main = document.querySelector('main')
@@ -204,11 +220,16 @@ function setBck(div){
                 div.style.visibility = "hidden"
                 dipre.style.visibility = "hidden"
             }, 1000)
+            cas-=2
+            let h1 = document.getElementById('sksk')
+            h1.textContent = "TESSERE RIMANENTI: "+cas
+
         }else{
+            
             setTimeout(function(){
                 div.style.backgroundImage="url(img/theme"+bg+".jpg)"
                 dipre.style.backgroundImage="url(img/theme"+bg+".jpg)"
-            }, 2000)
+            }, 1000)
         }
         nClick = 0
 

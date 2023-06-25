@@ -36,6 +36,7 @@ body{
     cursor: pointer;
     background-size: cover;
     background-repeat: no-repeat;
+    perspective: 1000px;
 }
 .BigText{
     font-size: 3rem;
@@ -63,3 +64,32 @@ body{
     height: 215px;
     width: 300;
 }
+.rotate{
+    transform: rotateY(-180deg);
+    border: #444444;
+    animation: rotate .5s;
+}
+.ctsm.flip {
+    animation-name: flip;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes flip {
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(90deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+  
+  .ctsm.front {
+    transform: rotateY(0deg);
+  }
+  
+  .ctsm.back {
+    transform: rotateY(180deg);
+  }
